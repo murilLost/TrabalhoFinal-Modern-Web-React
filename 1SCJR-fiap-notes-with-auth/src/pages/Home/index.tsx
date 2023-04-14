@@ -30,9 +30,8 @@ function Home() {
   const createNote = useCallback(
     (payload: FormValueState) => {
       (async () => {
-        console.log(payload);
+        
         const response = await NotesService.postNotes(payload);
-
         setNotes([...notes, response.data]);
 
         setShowModal({apresentar: false, titulo: 'Criar nota', funcaoSubmit: createNote});
@@ -49,9 +48,28 @@ function Home() {
     })();
   }, []);
 
-  const updateNote = (noteEdit: Note) => {
-    console.log(noteEdit);
-  };
+  const updateNote = useCallback(
+    (payload: Note) => {
+      (async () => {
+
+        const response = await NotesService.putNote(payload);
+        if(response.status == 200){
+
+          setNotes(notas => 
+            notas.map(nota => {
+              if(nota.id === payload.id) {
+                return {...nota, text: payload.text, urgent: payload.urgent};
+              }
+              return nota;
+            }));
+
+        }
+        
+        setShowModal({apresentar: false, titulo: 'Criar nota', funcaoSubmit: createNote});
+      })();
+    },
+    [notes]
+  );
 
   function editNoteButton(nota: Note){
     setNote(nota);
