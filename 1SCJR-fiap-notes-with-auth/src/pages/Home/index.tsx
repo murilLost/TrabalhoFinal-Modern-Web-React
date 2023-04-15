@@ -74,14 +74,25 @@ function Home() {
     [notes]
   );
 
-  function editNoteButton(nota: Note){
+  function editNoteButton(nota: Note): void{
     setNote(nota);
     setShowModal({ apresentar: true, titulo: 'Editar nota', funcaoSubmit: updateNote});
   }
 
-  function createNoteButton(){
+  function createNoteButton(): void{
     setNote({ id: 0, text: '', date: new Date , urgent: false});
     setShowModal({ apresentar: true, titulo: 'Criar nota', funcaoSubmit: createNote});
+  }
+
+  function validaOpcaoSelecionada(nota: Note): boolean{
+    if(selected === options[0] || 
+      nota.urgent == true && selected === options[1] ||
+      nota.urgent == false && selected === options[2]){
+
+      return true;
+    }
+
+    return false;
   }
 
 
@@ -122,21 +133,15 @@ function Home() {
       />
         {notes.filter(note => {
           if (search === ''){
-            return note;
+            if(validaOpcaoSelecionada(note)){
+
+              return note;
+            }
           }else if(note.text.toLowerCase().includes(search.toLowerCase())){
-            return note;
-          }
-          if(note.urgent == true && selected === options[1]){
-            console.log(note, "urgente")
-            return note;
-          } else if(note.urgent == false && selected === options[2]){
-            console.log(note, "não urgente")
-
-            return note;
-          }else{
-            console.log(note, "all")
-
-            return note;
+            if(validaOpcaoSelecionada(note)){
+              
+              return note;
+            }
           }
         }) 
         .map((note) => (
