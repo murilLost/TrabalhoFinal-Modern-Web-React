@@ -14,8 +14,10 @@ const fadeIn = keyframes`
 export const Container = styled.article`
   width: 200px;
   height: 200px;
-  padding: 10px;
+  padding: 15px;
   position: relative;
+  border-radius: 12px;
+
 
   color: var(--white);
   background-color: var(--primary);
