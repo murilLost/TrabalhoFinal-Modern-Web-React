@@ -12,7 +12,7 @@ const fadeIn = keyframes`
 `;
 
 export const Container = styled.article`
-  width: 200px;
+  width: 215px;
   height: 200px;
   padding: 15px;
   position: relative;

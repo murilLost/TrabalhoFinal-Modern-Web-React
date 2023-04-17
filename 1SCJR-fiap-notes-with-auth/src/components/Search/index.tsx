@@ -6,17 +6,15 @@ interface SearchProps {
     handleSearch: (e: any) => void;
 }
 
-    function Search({value, handleSearch}: SearchProps ) {
-        return(
-            <SearchStyled
-                value={value}
-                type="search"  
-                onChange={handleSearch}
-                placeholder="Pesquise sua Nota">
-            </SearchStyled>
+function Search({ value, handleSearch }: SearchProps) {
+    return (
+        <SearchStyled
+            value={value}
+            type="search"
+            onChange={handleSearch}
+            placeholder="Pesquise sua Nota">
+        </SearchStyled>
+    )
+}
 
-        )
-        
-    }
-
-    export default Search;
+export default Search;

@@ -2,14 +2,14 @@ import { SelectStyled } from "./styles";
 
 
 
-interface SelectProps{
+interface SelectProps {
     value: string,
     handleChange: (e: any) => void,
     options: string[];
-    
+
 }
 
-function Select({value, handleChange, options}: SelectProps){
+function Select({ value, handleChange, options }: SelectProps) {
 
     return (
         <SelectStyled

@@ -97,14 +97,9 @@ function Home() {
     return false;
   }
 
-
   useEffect(() => {
     if (!authenticated) navigate("/");
   }, [authenticated]);
-
-  const submit = () => {
-    console.log(selected);
-  };
 
   return (
     <>
@@ -157,6 +152,8 @@ function Home() {
               note={note}
             ></CardNote>
           ))}
+
+
 
       </Container>
     </>

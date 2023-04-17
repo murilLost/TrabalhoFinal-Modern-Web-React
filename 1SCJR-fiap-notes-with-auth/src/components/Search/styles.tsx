@@ -4,7 +4,6 @@ export const SearchStyled = styled.input`
   padding: 5px;
   width: 50%;
   height: 20%;
-
   background-color: #ed145b;
   color: var(--white);
 
