@@ -13,13 +13,16 @@ function CardNote({ note, handleDelete, handleUpdate }: NoteProps) {
     <>
       <Container>
         <p>{formatDate(new Date(note?.date))}</p>
-        <p>{note.text}</p>
-        <span className="material-icons edit" onClick={() => handleUpdate(note)}>edit</span>
+        <p>{note.text}
+        </p>
+
         {note.urgent && (
           <span className="material-icons" id="priority">
             priority_high
           </span>
         )}
+
+        <span className="material-icons edit" onClick={() => handleUpdate(note)}>edit</span>
         <span className="material-icons delete" onClick={() => handleDelete(note.id)}>
           {" "}
           delete_forever{" "}
